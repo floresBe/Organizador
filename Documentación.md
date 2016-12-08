@@ -82,3 +82,32 @@ esUtencilioCocina('Tenedor').
 esUtencilioCocina('Cuchara').
 esUtencilioCocina('Botella de Salsa Catsup').
 esUtencilioCocina('Botella de Salsa Amor').
+
+La deteccion de objetos se rige por las siguientes reglas.
+Donde segun la distancia a comprobar, se sabe si hay un objeto cerca o no; dicha distancia es proporcionada por un sensor de proximidad entregada en cm.
+
+Una distancia de 10 cm o menos implica un objeto cerca. 
+objetoEncontrado(Distancia):-Distancia=<10.
+
+Una distancia mayor a 10 y menor a mil implica que no hay ningun objeto cerca.
+objetoNoEncontrado(Distancia):-Distancia>10, Distancia < 1000.
+
+Una distancia igual o mayor a mil significa que el dispositivo esta fuera de rango.
+fueraDeRango(Distancia):- Distancia >= 1000.
+
+En base a los conocimientos recien establecidos, se sabe si hay objeto o no, segun la respuesta, el sensor de proximidad actua.
+
+Encontrar un objeto implica utilizar el sensor de vision para saber que tipo de objeto es.
+sensorProximidad(Distancia):- objetoEncontrado(Distancia),write('Un Objeto Encontrado..'),
+			      nl, write(' Sensar Objeto: '),read(Objeto),sensorVision(Objeto).
+			      
+No encontrar ningun objeto cerca implica seguir recorriendo la habitacion.
+sensorProximidad(Distancia):- objetoNoEncontrado(Distancia), write('Nngun Objeto Encontrado..'), 
+			      nl,recorrerHabitacion.
+
+Si el objeto mas cercano se encuentra a 1000 o cm, significa que el dispositivo salio de rango y se apagara.
+sensorProximidad(Distancia):- fueraDeRango(Distancia), write('Fuera de rango, Apagando..').
+
+
+
+
