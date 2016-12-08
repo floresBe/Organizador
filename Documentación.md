@@ -108,6 +108,61 @@ sensorProximidad(Distancia):- objetoNoEncontrado(Distancia), write('Nngun Objeto
 Si el objeto mas cercano se encuentra a 1000 o cm, significa que el dispositivo salio de rango y se apagara.
 sensorProximidad(Distancia):- fueraDeRango(Distancia), write('Fuera de rango, Apagando..').
 
+Para detectar el tipo de objeto, se utilizaron las siguientes reglas.
+Una vez detectado un objeto, se dispara la accion de sensar el objeto para saber de que tipo es, como anteriormente se explico, esta informacion es obtenida por un sensor de vision.
 
+En la base de datos actual se encuentran 3 tipos de objetos registrados, para los cuales se desata una accion diferente para cada uno al momento de encontrarlos.
 
+Si el objeto encontrado es ropa, habra que verificar si esta esta limpia o sucia.
+sensorVision(Objeto):-esRopa(Objeto),write('El objeto encontrado es Ropa '),
+		      nl,write('Sensar Suciedad (0% - 100%): '), read(Nivel),sensorSuciedad(Objeto,Nivel).
+		      
+Si el objeto es basura, se busca identificar si se encuentra fuera de su lugar.	
+sensorVision(Objeto):-esBasura(Objeto),write('El objeto encontrado es basura'),
+		      nl,write('Sensar Lugar: '), read(Lugar), estaEnSuLugar(Objeto,Lugar).
+		      
+Si el objeto es un utencilio de cocina, se envia directamente a la cocina.
+sensorVision(Objeto):-esUtencilioCocina(Objeto),write('El objeto Pertencece a la cocina.'),
+		      colocarEnSuLugar(Objeto,'Cocina').
 
+Existen reglas con las que se puede inferir si un objeto esta limpio o sucio.
+
+Un nivel de suciedad igual o mayor al %50 implica que el objeto esta sucio.
+estaSucio(Nivel):- Nivel>=50.
+
+Un nivel de suciedad menor al %50 implica que el objeto aun esta limpio.
+estaLimpio(Nivel):-Nivel<50.
+
+Segun la suciedad y el objeto encontrado, revisar .
+sensorSuciedad(Objeto,Nivel):-estaSucio(Nivel),write('El '+ Objeto +' esta sucio..'),
+			      nl,write('Sensar Lugar: '), read(Lugar), estaEnSuLugar(Objeto,Lugar,Nivel).
+sensorSuciedad(Objeto,Nivel):-estaLimpio(Nivel),write('El '+ Objeto +' esta limpio..'),
+	                      nl,write('Sensar Lugar: '), read(Lugar), estaEnSuLugar(Objeto,Lugar,Nivel).
+			      
+Los lugares de los objetos estan registrados dentro de las siguientes reglas.
+
+cuando el objeto es ropa, puede estar limpia o sucia, dependiendo de esto, cambia su lugar ..
+
+Si el objeto esta en su lugar, se vuelve a recorrer la habiatacion en busca de mas objetos.
+estaEnSuLugar(Objeto,'Armario',NivelSuciedad):- esRopa(Objeto),estaLimpio(NivelSuciedad),
+	                                        nl,write('El '+ Objeto +' se encuentra en su lugar.'),
+						nl, recorrerHabitacion.
+estaEnSuLugar(Objeto,'Cesto',NivelSuciedad):- esRopa(Objeto),estaSucio(NivelSuciedad),
+					      nl,write('El '+ Objeto +' se encuentra en su lugar'),
+					      nl, recorrerHabitacion.
+Si el objeto no esta en su lugar, lo lleva directo a el.						
+estaEnSuLugar(Objeto,Lugar,NivelSuciedad):- esRopa(Objeto),estaLimpio(NivelSuciedad),\+(Lugar = 'Armario'),
+					    nl,write('El '+ Objeto +' No se encuentra en su lugar'),
+					    nl,colocarEnSuLugar(Objeto,'Armario').
+estaEnSuLugar(Objeto,Lugar,NivelSuciedad):- esRopa(Objeto),estaSucio(NivelSuciedad),\+(Lugar = 'Cesto'),
+					    nl,write('El '+ Objeto +' No se encuentra en su lugar'),
+					    nl,colocarEnSuLugar(Objeto,'Cesto').
+Cuando el objeto es basura, su lugar es el cesto.
+misma logica, que en la regla anterior.
+estaEnSuLugar(Objeto,'Cesto'):- esBasura(Objeto),
+				write(Objeto +' se encuentra en su lugar'),
+				nl, recorrerHabitacion.
+estaEnSuLugar(Objeto,Lugar):- esBasura(Objeto),\+( Lugar = 'Cesto'),
+                              nl,write(Objeto +'No se encuentra en su lugar'),
+                              nl,colocarEnSuLugar(Objeto,'Cesto').
+			      
