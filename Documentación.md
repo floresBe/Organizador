@@ -58,3 +58,27 @@ recorrerHabitacion:- write('Recorriendo Habitacion.. '),
 colocarEnSuLugar toma al objeto y lo coloca en el lugar establecido en la base de datos y una vez colocado sigue recorriendo la habitacion.
 colocarEnSuLugar(Objeto,Lugar):- write('Colocando  '+ Objeto +' en  '+ Lugar),
 	                         nl,recorrerHabitacion.
+
+Dentro de la base de datos del organizador se encuentran los siguientes hechos.
+
+Se busca que al momento de comprobar los siguientes hechos, el parametro entrante sea proporcionado por un sensor de vision, quien dentro de su memoria ya tiene identificados los objetos que se pudiera encontrar en su camino.
+
+esRopa('Pantalon').
+esRopa('Camiseta').
+esRopa('Calcetin').
+esRopa('Calzon').
+esRopa('Sosten').
+esRopa('Abrigo').
+esRopa('Guante').
+
+esBasura('Papel Arrugado').
+esBasura('Botella Vacia').
+esBasura('Bola de Polvo').
+esBasura('Restos de Comida').
+
+esUtencilioCocina('Vaso').
+esUtencilioCocina('Plato').
+esUtencilioCocina('Tenedor').
+esUtencilioCocina('Cuchara').
+esUtencilioCocina('Botella de Salsa Catsup').
+esUtencilioCocina('Botella de Salsa Amor').
