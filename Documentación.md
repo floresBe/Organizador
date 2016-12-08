@@ -37,4 +37,5 @@ Descripcion de la problematica.
 Se trata de un dispositivo capaz de recorrer una habitación y, con la ayuda de mecanismos creados para sostener y mover objetos, sensores cuya funcion es determinar el tipo de objeto y de una serie de conocimientos previos, colocar cada uno de los objetos con los que se tope en su lugar especificado.
 
 
-
+Justificación
+Hoy en dia es muy comun que la vida de las personas sea mas activa que antes, es decir, no es raro conocer a una persona que estudie y trabaje a la vez, o que tenga mas de un trabajo. Es un estilo de vida que deja a cualquier persona desorganizada con tiempo a penas para comer y dormir antes de empezar de nuevo el dia a dia. Este tipo de situaciones genera, entre otras cosas, falta de organizacion y limpieza en las habitaciones en las que generalmente se llevan a cabo las actividades del diario.  
