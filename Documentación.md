@@ -32,3 +32,9 @@ en una expresión lingüística humana.
 Inteligencia artificial
 
 Sistemas de información
+
+Descripcion de la problematica.
+Se trata de un dispositivo capaz de recorrer una habitación y, con la ayuda de mecanismos creados para sostener y mover objetos, sensores cuya funcion es determinar el tipo de objeto y de una serie de conocimientos previos, colocar cada uno de los objetos con los que se tope en su lugar especificado.
+
+
+
