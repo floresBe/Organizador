@@ -19,6 +19,7 @@ Además se busca que los métodos sean implantados en maquinas de forma que la r
 La programación lógica: construye base de conocimientos mediante reglas y hechos.
 
 Regla: implicación o inferencia lógica que deduce nuevo conocimiento, la regla permite definir nuevas relaciones apartir de otras ya existentes.
+
 Hecho: declaración, cláusula o proposición cierta o falsa, el hecho establece una relación entre objetos y es la forma más sencilla de sentencia.
 
 Campos de Aplicación.
@@ -31,6 +32,7 @@ en una expresión lingüística humana.
 
 Inteligencia artificial
 
+
 Sistemas de información
 
 Descripcion de la problematica.
@@ -38,4 +40,21 @@ Se trata de un dispositivo capaz de recorrer una habitación y, con la ayuda de 
 
 
 Justificación
-Hoy en dia es muy comun que la vida de las personas sea mas activa que antes, es decir, no es raro conocer a una persona que estudie y trabaje a la vez, o que tenga mas de un trabajo. Es un estilo de vida que deja a cualquier persona desorganizada con tiempo a penas para comer y dormir antes de empezar de nuevo el dia a dia. Este tipo de situaciones genera, entre otras cosas, falta de organizacion y limpieza en las habitaciones en las que generalmente se llevan a cabo las actividades del diario.  
+Hoy en dia es muy comun que la vida de las personas sea mas activa que antes, es decir, no es raro conocer a una persona que estudie y trabaje a la vez, o que tenga mas de un trabajo. Es un estilo de vida que deja a cualquier persona desorganizada con tiempo a penas para comer y dormir antes de empezar de nuevo el dia a dia. Este tipo de situaciones genera, entre otras cosas, una eterna falta de organizacion y limpieza en las habitaciones en las que generalmente se llevan a cabo las actividades del diario. 
+
+Desarrollo.
+Para el desarrollo de la logica del organizador se utilizo el siguiente codigo.
+
+Las siguientes reglas pueden interpretarse como acciones a realiza por el Organizador.
+
+encender inicia la secuencia de acciones a realizar mandando a llamar la accion de recorrerHabitacion. 
+encender:- write('Dispositivo Encendido.. '), nl, recorrerHabitacion.
+
+recorrerHabitacion, como su nombre lo dice, traslada al dispositivo por toda la habitacion sensando la distancia que existe entre el y los objetos a su alrededor.
+recorrerHabitacion:- write('Recorriendo Habitacion.. '),
+		     nl,write('Sensar Distancia (cm): '),
+		     read(Distancia),sensorProximidad(Distancia).
+
+colocarEnSuLugar toma al objeto y lo coloca en el lugar establecido en la base de datos y una vez colocado sigue recorriendo la habitacion.
+colocarEnSuLugar(Objeto,Lugar):- write('Colocando  '+ Objeto +' en  '+ Lugar),
+	                         nl,recorrerHabitacion.
