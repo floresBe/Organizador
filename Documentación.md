@@ -166,3 +166,53 @@ estaEnSuLugar(Objeto,Lugar):- esBasura(Objeto),\+( Lugar = 'Cesto'),
                               nl,write(Objeto +'No se encuentra en su lugar'),
                               nl,colocarEnSuLugar(Objeto,'Cesto').
 			      
+Resultados.
+
+Encender dispositivo:
+
+1 ?- encender.
+Dispositivo Encendido.. 
+Recorriendo Habitacion.. 
+Sensar Distancia (cm): 20.
+Nngun Objeto Encontrado..Recorriendo Habitacion.. 
+Sensar Distancia (cm): |: 15.
+Nngun Objeto Encontrado..Recorriendo Habitacion.. 
+Sensar Distancia (cm): |: 13.
+Nngun Objeto Encontrado..Recorriendo Habitacion.. 
+Sensar Distancia (cm): |: 10.
+Un Objeto Encontrado..
+ Sensar tipo de Objeto: |: 'Pantalon'.
+El objeto encontrado es Ropa 
+Sensar Suciedad (0% - 100%): |: 25.
+El +Pantalon+ esta limpio..
+Sensar Lugar: |: 'Piso'.
+
+El +Pantalon+ No se encuentra en su lugar
+Colocando  +Pantalon+ en  +Armario
+Recorriendo Habitacion.. 
+Sensar Distancia (cm): |: 10.
+Un Objeto Encontrado..
+ Sensar tipo de Objeto: |: 'Papel Arrugado'.
+El objeto encontrado es basura
+Sensar Lugar: |: 'Piso'.
+
+Papel Arrugado+No se encuentra en su lugar
+Colocando  +Papel Arrugado+ en  +Cesto
+Recorriendo Habitacion.. 
+Sensar Distancia (cm): |: 10.
+Un Objeto Encontrado..
+ Sensar tipo de Objeto: |: 'Calzon'.
+El objeto encontrado es Ropa 
+Sensar Suciedad (0% - 100%): |: 95.
+El +Calzon+ esta sucio..
+Sensar Lugar: |: 'Cama'.
+
+El +Calzon+ No se encuentra en su lugar
+Colocando  +Calzon+ en  +Cesto
+Recorriendo Habitacion.. 
+Sensar Distancia (cm): 1000.
+Sensor Fuera de Rango, Apagando..
+true.
+
+Conclusion.
+Con este ejemplo lo que podemos concluir es que cualquier tipo de conocimientos que un humano pueda tener, es posible transmitirselo a una maquina o cosa. Es importante destacar que la inteligencia artificial esta inspirada por el hecho de que cualquier persona busca facilitar su vida, ese es presisamente el trabajo de la programacion logica, darle a un objeto la capacidad de decidir cual es la mejor opcion a realizar segun los parametros recibidos, para asi poder encargarle una tarea de la cual el ser humano busca deshacerse.
